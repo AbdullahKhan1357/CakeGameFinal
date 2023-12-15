@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CakeController : MonoBehaviour
 {
-     bool isCollide, isFluidCollide, isCooked, isSmashed, isColored, isCreamed, isPackaged;
+     bool isCollide, isFluidCollide, isCooked, isColored, isCreamed, isPackaged;
      Transform gameObjectToLead;
-
+     public bool isSmashed;
      [SerializeField] Transform CakeHolder;
      [SerializeField] Transform Dough;
      [SerializeField] Transform CookedCake;
@@ -14,12 +14,14 @@ public class CakeController : MonoBehaviour
      [SerializeField] Transform cake;
      [SerializeField] Transform Cream;
      [SerializeField] Transform Package;
-    float speed;
+     float speed;
 
      [SerializeField] Material HeartCakeMaterial;
+    public static CakeController instance;
      // Start is called before the first frame update
      void Start()
      {
+        instance = this;
           isCollide = false;
           isFluidCollide = false;
           isCooked = false;
@@ -32,7 +34,7 @@ public class CakeController : MonoBehaviour
           HeartCake.gameObject.SetActive(false);
           Cream.gameObject.SetActive(false);
           Package.gameObject.SetActive(false);
-     }
+
           speed = GameObject.Find("Player").GetComponent<PlayerController>().speed;
     }
 

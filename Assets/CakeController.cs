@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CakeController : MonoBehaviour
 {
-     bool isCollide, isFluidCollide, isCooked, isSmashed, isColored;
+     bool isCollide, isFluidCollide, isCooked, isSmashed, isColored, isCreamed, isPackaged;
      Transform gameObjectToLead;
 
      [SerializeField] Transform CakeHolder;
@@ -12,6 +12,8 @@ public class CakeController : MonoBehaviour
      [SerializeField] Transform CookedCake;
      [SerializeField] Transform HeartCake;
      [SerializeField] Transform cake;
+     [SerializeField] Transform Cream;
+     [SerializeField] Transform Package;
 
      [SerializeField] Material HeartCakeMaterial;
      // Start is called before the first frame update
@@ -22,10 +24,13 @@ public class CakeController : MonoBehaviour
           isCooked = false;
           isSmashed = false;
           isColored = false;
+          isCreamed = false;
+          isPackaged = false;
           Dough.gameObject.SetActive(false);
           CookedCake.gameObject.SetActive(false);
           HeartCake.gameObject.SetActive(false);
-
+          Cream.gameObject.SetActive(false);
+          Package.gameObject.SetActive(false);
      }
 
      // Update is called once per frame
@@ -84,6 +89,20 @@ public class CakeController : MonoBehaviour
                cake.gameObject.GetComponent<MeshRenderer>().material.color = HeartCakeMaterial.color;
 
                
+          }
+
+          if ((collision.transform.tag == "Cream") & !isCreamed)
+          {
+               isCreamed = true;
+
+               Cream.gameObject.SetActive(true);
+          }
+
+          if ((collision.transform.tag == "Package") & !isPackaged)
+          {
+               isPackaged = true;
+
+               Package.gameObject.SetActive(true);
           }
      }
 }

@@ -12,6 +12,7 @@ public class CakeController : MonoBehaviour
      [SerializeField] Transform CookedCake;
      [SerializeField] Transform HeartCake;
      [SerializeField] Transform cake;
+    float speed;
 
      [SerializeField] Material HeartCakeMaterial;
      // Start is called before the first frame update
@@ -25,17 +26,17 @@ public class CakeController : MonoBehaviour
           Dough.gameObject.SetActive(false);
           CookedCake.gameObject.SetActive(false);
           HeartCake.gameObject.SetActive(false);
-
-     }
+          speed = GameObject.Find("Player").GetComponent<PlayerController>().speed;
+    }
 
      // Update is called once per frame
      void Update()
      {
           if (isCollide)
           {
-               transform.position += new Vector3(0, 0, -gameObjectToLead.GetComponent<PlayerController>().ballSpeed * Time.deltaTime);
-               transform.position = new Vector3(gameObjectToLead.GetComponent<PlayerController>().newX, transform.position.y, transform.position.z);
-          }
+               transform.position += new Vector3(0, 0, -speed * Time.deltaTime);
+               transform.position = new Vector3(gameObjectToLead.transform.position.x, transform.position.y, transform.position.z);
+        }
 
 
      }

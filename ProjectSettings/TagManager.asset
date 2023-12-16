@@ -9,6 +9,12 @@ TagManager:
   - Cook
   - Smash
   - PinkFluid
+<<<<<<< Updated upstream
+=======
+  - Cream
+  - Package
+  - CakeProp
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX

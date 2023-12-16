@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
                 float currentX = transform.position.x;
 
                 // Smoothly move towards the target position
-                newX = Mathf.MoveTowards(currentX, targetX, speed * Time.deltaTime);
+                newX = Mathf.MoveTowards(currentX, targetX, speed*2 * Time.deltaTime);
                 transform.position = new Vector3(newX
                     
                     
